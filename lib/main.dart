@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
+const request =
+    "https://api.hgbrasil.com/finance?format=json-cors&key=60df7604";
+
+void main() async {
+  http.Response response = await http.get(request);
+  print(response.body);
   runApp(MaterialApp(
-    home: Home(),
     debugShowCheckedModeBanner: false,
+    home: Container(),
   ));
-}
-
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
 }
