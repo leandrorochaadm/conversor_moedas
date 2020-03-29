@@ -10,7 +10,6 @@ const request =
 
 void main() async {
   print(await getData());
-
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Home(),
@@ -40,6 +39,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   double dolar, euro;
 
+  final realControler = TextEditingController();
+  final dolarControler = TextEditingController();
+  final euroControler = TextEditingController();
+
+  void _realChanged(String text) {
+    print(text);
+  }
+
+  void _dolarChanged(String text) {}
+  void _euroChanged(String text) {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,11 +101,14 @@ class _HomeState extends State<Home> {
                             size: 150.0,
                             color: Colors.amber,
                           ),
-                          buildTextField("Reais", "R\$"),
+                          buildTextField(
+                              "Reais", "R\$", realControler, _realChanged),
                           Divider(),
-                          buildTextField("Dólar", "US\$"),
+                          buildTextField(
+                              "Dólar", "US\$", dolarControler, _dolarChanged),
                           Divider(),
-                          buildTextField("Euro", "€")
+                          buildTextField(
+                              "Euro", "€", euroControler, _euroChanged),
                         ],
                       ),
                     ),
@@ -108,8 +120,12 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget buildTextField(String label, String prefix) {
+Widget buildTextField(
+    String label, String prefix, TextEditingController controller, Function f) {
   return TextField(
+    onChanged: f,
+    controller: controller,
+    keyboardType: TextInputType.number,
     decoration: InputDecoration(
       labelText: label,
       labelStyle: TextStyle(color: Colors.amber),
