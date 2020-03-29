@@ -3,4 +3,4 @@
 ### É um projeto Flutter, com propósito de fazer conversão de moedas (câmbio).
 **Baseado no app do [Curso do Daniel Ciolfi](https://www.udemy.com/course/curso-completo-flutter-app-android-ios/)**
 
-![Home](Screenshot_home.png | width=200)
+<img src="Screenshot_home.png" height="450" />
