@@ -92,18 +92,11 @@ class _HomeState extends State<Home> {
                             size: 150.0,
                             color: Colors.amber,
                           ),
-                          TextField(
-                            decoration: InputDecoration(
-                              labelText: "Reais",
-                              labelStyle: TextStyle(color: Colors.amber),
-                              border: OutlineInputBorder(),
-                              prefixText: "R\$",
-                            ),
-                            style: TextStyle(
-                              color: Colors.amber,
-                              fontSize: 25.0,
-                            ),
-                          ),
+                          buildTextField("Reais", "R\$"),
+                          Divider(),
+                          buildTextField("Dólar", "US\$"),
+                          Divider(),
+                          buildTextField("Euro", "€")
                         ],
                       ),
                     ),
@@ -113,4 +106,19 @@ class _HomeState extends State<Home> {
           }),
     );
   }
+}
+
+Widget buildTextField(String label, String prefix) {
+  return TextField(
+    decoration: InputDecoration(
+      labelText: label,
+      labelStyle: TextStyle(color: Colors.amber),
+      border: OutlineInputBorder(),
+      prefixText: prefix,
+    ),
+    style: TextStyle(
+      color: Colors.amber,
+      fontSize: 24.0,
+    ),
+  );
 }
